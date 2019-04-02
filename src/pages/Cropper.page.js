@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ImageEditor, Animated, PanResponder } from 'react-native';
 import RNImageRotate from 'react-native-image-rotate';
 import PropTypes from 'prop-types';
-import { SCREEN_WIDTH, SCREEN_HEIGHT, W, H, Q } from '../components/Cropper/Cropper.constants';
+import { SCREEN_WIDTH, SCREEN_HEIGHT, W, H, Q, MINIMUM_CROP_AREA } from '../components/Cropper/Cropper.constants';
 import Cropper from '../components/Cropper/Cropper.component';
 import { getCropperLimits } from '../utils';
 
@@ -301,19 +301,19 @@ class CropperPage extends Component {
 
   isAllowedToMoveTopSide = (gesture) => {
     return this.state.topPosition.y._offset + gesture.dy >= this.state.TOP_LIMIT - this.props.BORDER_WIDTH &&
-      this.state.topPosition.y._offset + gesture.dy + this.props.BORDER_WIDTH + 1 < this.state.bottomPosition.y._offset;
+      this.state.topPosition.y._offset + gesture.dy + this.props.BORDER_WIDTH + MINIMUM_CROP_AREA < this.state.bottomPosition.y._offset;
   }
   isAllowedToMoveLeftSide = (gesture) => {
     return this.state.leftPosition.x._offset + gesture.dx >= this.state.LEFT_LIMIT - this.props.BORDER_WIDTH &&
-      this.state.leftPosition.x._offset + gesture.dx + this.props.BORDER_WIDTH + 1 < this.state.rightPosition.x._offset;
+      this.state.leftPosition.x._offset + gesture.dx + this.props.BORDER_WIDTH + MINIMUM_CROP_AREA < this.state.rightPosition.x._offset;
   }
   isAllowedToMoveBottomSide = (gesture) => {
     return this.state.bottomPosition.y._offset + gesture.dy <= SCREEN_HEIGHT - this.state.BOTTOM_LIMIT &&
-        this.state.topPosition.y._offset + this.props.BORDER_WIDTH + 1 < this.state.bottomPosition.y._offset + gesture.dy;
+        this.state.topPosition.y._offset + this.props.BORDER_WIDTH + MINIMUM_CROP_AREA < this.state.bottomPosition.y._offset + gesture.dy;
   }
   isAllowedToMoveRightSide = (gesture) => {
     return this.state.rightPosition.x._offset + gesture.dx <= SCREEN_WIDTH - this.state.RIGHT_LIMIT &&
-        this.state.leftPosition.x._offset + this.props.BORDER_WIDTH + 1 < this.state.rightPosition.x._offset + gesture.dx;
+        this.state.leftPosition.x._offset + this.props.BORDER_WIDTH + MINIMUM_CROP_AREA < this.state.rightPosition.x._offset + gesture.dx;
   }
 
   isAllowedToMove = (position, gesture) => {
