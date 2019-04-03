@@ -17,7 +17,7 @@ This component depend on `react-native-image-rotate` library. It needs to be ins
 **STEPS TO INSTALL:**
 1. `npm install --save react-native-image-rotate`
 2. `react-native link react-native-image-rotate`
-3. `npm install --save react-native-advanvce-image-cropper`
+3. `npm install --save react-native-advance-image-cropper`
 
 #### Properties
 -------------
