@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { ImageEditor, Animated, PanResponder } from 'react-native';
 import RNImageRotate from 'react-native-image-rotate';
 import PropTypes from 'prop-types';
-import { SCREEN_WIDTH, SCREEN_HEIGHT, W, H, Q, MINIMUM_CROP_AREA } from '../components/Cropper/Cropper.constants';
+import { SCREEN_WIDTH, SCREEN_HEIGHT, W, MINIMUM_CROP_AREA } from '../components/Cropper/Cropper.constants';
 import Cropper from '../components/Cropper/Cropper.component';
 import { getCropperLimits } from '../utils';
 
 class CropperPage extends Component {
   constructor(props) {
     super(props);
-    const { imageWidth, imageHeight, BORDER_WIDTH } = props;
+    const { imageWidth, imageHeight, BORDER_WIDTH, FOOTER_HEIGHT } = props;
+    const Q = FOOTER_HEIGHT // to set Footer Height
+    const H = SCREEN_HEIGHT - Q
     const W_INT = W - (2 * BORDER_WIDTH);
     const H_INT = H - (2 * BORDER_WIDTH);
     const {
@@ -297,6 +299,17 @@ class CropperPage extends Component {
         { rotate: `${this.state.rotation.toString()}deg` },
       ],
     };
+  }
+
+  getFooterStyle = () => {
+    const { FOOTER_HEIGHT } = this.props
+    return {
+      position: 'absolute',
+      top: SCREEN_HEIGHT - FOOTER_HEIGHT,
+      bottom: 0,
+      width: W,
+      zIndex: 9,
+    }
   }
 
   isAllowedToMoveTopSide = (gesture) => {
@@ -638,6 +651,7 @@ class CropperPage extends Component {
         getRightSideStyle={this.getRightSideStyle}
         getRectangleStyle={this.getRectangleStyle}
         getImageStyle={this.getImageStyle}
+        getFooterStyle={this.getFooterStyle}
         onDone={this.onDone}
         onRotate={this.onRotate}
         onCancel={this.onCancel}

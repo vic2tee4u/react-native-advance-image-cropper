@@ -18,6 +18,7 @@ const App = (props) => (
     initialRotation={props.initialRotation}
     NOT_SELECTED_AREA_OPACITY={props.NOT_SELECTED_AREA_OPACITY}
     BORDER_WIDTH={props.BORDER_WIDTH}
+    FOOTER_HEIGHT={props.FOOTER_HEIGHT}
   />
 )
 
@@ -36,6 +37,7 @@ App.propTypes = {
   initialRotation: PropTypes.number,
   NOT_SELECTED_AREA_OPACITY: PropTypes.number,
   BORDER_WIDTH: PropTypes.number,
+  FOOTER_HEIGHT: PropTypes.number,
 };
 
 App.defaultProps = {
@@ -57,7 +59,8 @@ App.defaultProps = {
   RIGHT_VALUE: 0,
   initialRotation: 0,
   NOT_SELECTED_AREA_OPACITY: 0.5,
-  BORDER_WIDTH: 50
+  BORDER_WIDTH: 50,
+  FOOTER_HEIGHT: 100,
 };
 
 export default App;

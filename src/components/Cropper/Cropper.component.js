@@ -6,20 +6,14 @@ import DefaultFooter from '../Footer/DefaultFooter.component';
 
 const Cropper = (props) => (
   <View style={styles.container}>
-    {/* <View style={{ flex: 1 }}> */}
-      <View style={styles.secondContainer}>
-        {/* <Image
-          style={props.getImageStyle()}
-          source={{ uri: props.imageUri }}
-        /> */}
-        <Image
-          style={props.getImageStyle()}
-          source={{ uri: props.imageUri }}
-        />
-      </View>
-    {/* </View> */}
+    <View style={styles.secondContainer}>
+      <Image
+        style={props.getImageStyle()}
+        source={{ uri: props.imageUri }}
+      />
+    </View>
 
-    <View style={styles.footerContainer}>
+    <View style={props.getFooterStyle()}>
       {
         React.cloneElement(
           props.footerComponent,

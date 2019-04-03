@@ -16,13 +16,13 @@ export default StyleSheet.create({
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
   },
-  footerContainer: {
-    position: 'absolute',
-    top: SCREEN_HEIGHT - Q,
-    bottom: 0,
-    width: W,
-    zIndex: 99,
-  },
+  // footerContainer: {
+  //   position: 'absolute',
+  //   top: SCREEN_HEIGHT - Q,
+  //   bottom: 0,
+  //   width: W,
+  //   zIndex: 99,
+  // },
   gridRow: {
     flex: 1,
     flexDirection: 'row'
