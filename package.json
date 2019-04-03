@@ -1,7 +1,7 @@
 {
-  "name": "react-native-amazing-cropper",
-  "version": "0.0.9",
-  "description": "Custom react native cropper with rotation",
+  "name": "react-native-advance-image-cropper",
+  "version": "1.0.2",
+  "description": "React native image cropper with rotation and custom Footer",
   "main": "index.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ggunti/react-native-amazing-cropper.git"
+    "url": "git+https://github.com/Mr-Strike/react-native-advance-image-cropper.git"
   },
   "author": {
-    "name": "Gotha Guntter",
-    "email": "ggunty96@gmail.com"
+    "name": "Mr. Strike",
+    "email": "brahamdev.sharma26@gmail.com"
   },
   "license": "MIT",
   "dependencies": {
@@ -37,10 +37,12 @@
     "crop",
     "rotate",
     "image",
-    "cropper"
+    "cropper",
+    "custom",
+    "edit"
   ],
   "bugs": {
-    "url": "https://github.com/ggunti/react-native-amazing-cropper/issues"
+    "url": "https://github.com/Mr-Strike/react-native-advance-image-cropper/issues"
   },
-  "homepage": "https://github.com/ggunti/react-native-amazing-cropper"
+  "homepage": "https://github.com/Mr-Strike/react-native-advance-image-cropper"
 }

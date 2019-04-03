@@ -1,5 +1,5 @@
-# react-native-amazing-cropper
-Image cropper for react native made with Animated API (with rotation possibility) - **for iOS & android**
+# react-native-advance-image-cropper
+Image cropper for react native made with Animated API (with rotation possibility and Custom Footer) - **for iOS & android**
 
 <img src="https://i.imgur.com/c5lqfLr.png" height="400" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://i.imgur.com/HNHkWQ7.png" height="400" />
 <br/>
@@ -17,7 +17,7 @@ This component depend on `react-native-image-rotate` library. It needs to be ins
 **STEPS TO INSTALL:**
 1. `npm install --save react-native-image-rotate`
 2. `react-native link react-native-image-rotate`
-3. `npm install --save react-native-amazing-cropper`
+3. `npm install --save react-native-advanvce-image-cropper`
 
 #### Properties
 -------------
@@ -32,6 +32,7 @@ This component depend on `react-native-image-rotate` library. It needs to be ins
 | footerComponent | `component` | Custom component for footer. Default is `    <DefaultFooter doneText='DONE' rotateText='ROTATE' cancelText='CANCEL' />`|
 | NOT_SELECTED_AREA_OPACITY | `number` | The opacity of the area which is not selected by the cropper. Should be a value between `0` and `1`. Default is `0.5`|
 | BORDER_WIDTH | `number` | The border width [(see image)](https://i.imgur.com/CMSS953.png). Default is `50`|
+| FOOTER_WIDTH | `number` | The height (in pixels) of the Footer (required for custom footers for better View). Default is '100'|
 
 
 #### Usage example 1 (using the default footer)
@@ -40,9 +41,9 @@ This component depend on `react-native-image-rotate` library. It needs to be ins
 import React, { Component } from 'react';
 import { Platform, ImageStore } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import AmazingCropper from 'react-native-amazing-cropper';;
+import ImageCropper from 'react-native-advance-image-cropper';;
 
-class AmazingCropperPage extends Component {
+class ImageCropperPage extends Component {
   onDone = (croppedImageUri) => {
     console.log('croppedImageUri = ', croppedImageUri);
     if (Platform.OS === 'ios') {
@@ -69,7 +70,7 @@ class AmazingCropperPage extends Component {
 
   render() {
     return (
-      <AmazingCropper
+      <ImageCropper
         onDone={this.onDone}
         onCancel={this.onCancel}
         imageUri='https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg'
@@ -89,9 +90,9 @@ class AmazingCropperPage extends Component {
 import React, { Component } from 'react';
 import { Platform, ImageStore } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import AmazingCropper, { DefaultFooter } from 'react-native-amazing-cropper';
+import ImageCropper, { DefaultFooter } from 'react-native-advance-image-cropper';
 
-class AmazingCropperPage extends Component {
+class ImageCropperPage extends Component {
   onDone = (croppedImageUri) => {
     console.log('croppedImageUri = ', croppedImageUri);
     if (Platform.OS === 'ios') {
@@ -118,7 +119,7 @@ class AmazingCropperPage extends Component {
 
   render() {
     return (
-      <AmazingCropper
+      <ImageCropper
         // Pass custom text to the default footer
         footerComponent={<DefaultFooter doneText='OK' rotateText='ROT' cancelText='BACK' />}
         onDone={this.onDone}
@@ -208,10 +209,10 @@ Now just pass your footer component to the Cropper like here:
 import React, { Component } from 'react';
 import { Platform, ImageStore } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import AmazingCropper from 'react-native-amazing-cropper';
+import ImageCropper from 'react-native-advance-image-cropper';
 import CustomCropperFooter from './src/components/CustomCropperFooter.component';
 
-class AmazingCropperPage extends Component {
+class ImageCropperPage extends Component {
   onDone = (croppedImageUri) => {
     console.log('croppedImageUri = ', croppedImageUri);
     if (Platform.OS === 'ios') {
@@ -238,7 +239,7 @@ class AmazingCropperPage extends Component {
 
   render() {
     return (
-      <AmazingCropper
+      <ImageCropper
         // Use your custom footer component
         // Do NOT pass onDone, onRotate and onCancel to the footer component, the Cropper will do it for you
         footerComponent={<CustomCropperFooter />}
@@ -247,13 +248,9 @@ class AmazingCropperPage extends Component {
         imageUri='https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg'
         imageWidth={1600}
         imageHeight={2396}
+        FOOTER_HEIGHT={200}
       />
     );
   }
 }
 ```
-
-#### Did you like it? Check out also my mini applications on Google Play:
-Simple Share: https://play.google.com/store/apps/details?id=com.sendfiles </br>
-Card Trick: https://play.google.com/store/apps/details?id=com.card_trick_2 </br>
-Swwwitch: https://play.google.com/store/apps/details?id=com.swwwitch
