@@ -29,7 +29,7 @@ export default StyleSheet.create({
   },
   gridColumn: {
     flex: 1,
-    borderWidth: 1,
+    borderWidth: 0, // To add vertical horizontal line in the cropper area
     borderColor: 'rgba(255, 255, 255, 0.5)'
   },
   animation: {
