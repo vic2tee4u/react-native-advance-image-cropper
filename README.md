@@ -23,7 +23,7 @@ This component depend on `react-native-image-rotate` library. It needs to be ins
 -------------
 | Prop  | Type | Description |
 | :------------ |:---------------:| :---------------|
-| onDone | `function` | A function which accepts 1 argument `croppedImageUri`. Called when user press the 'DONE' button |
+| onDone | `function` | A function which accepts 1 argument `croppedImageData`. Called when user press the 'DONE' button |
 | onCancel | `function` | A function without arguments. Called when user press the 'CANCEL' button |
 | imageUri | `string` | The uri of the image you want to crop or rotate |
 | imageWidth | `number` | The width (in pixels) of the image you passed in `imageUri` |

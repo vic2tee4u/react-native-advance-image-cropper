@@ -616,7 +616,13 @@ class CropperPage extends Component {
           rotatedUri,
           cropData,
           (croppedUri) => {
-            this.props.onDone(croppedUri);
+            console.warn('croppeddata from cropper', cropData)
+            const croppedImageData = {
+              width,
+              height,
+              uri: croppedUri,
+            }
+            this.props.onDone(croppedImageData);
           },
           (err) => {
             console.log('cropping error');
