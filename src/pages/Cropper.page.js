@@ -607,13 +607,16 @@ class CropperPage extends Component {
       size: { width, height },
       resizeMode: 'stretch'
     };
-    RNImageRotate.rotateImage(
-      this.props.imageUri,
-      this.state.rotation,
-      (rotatedUri) => {
+
+    // Rotation is removed for now
+
+    // RNImageRotate.rotateImage(
+    //   this.props.imageUri,
+    //   this.state.rotation,
+    //   (rotatedUri) => {
         //
         ImageEditor.cropImage(
-          rotatedUri,
+          this.props.imageUri,
           cropData,
           (croppedUri) => {
             console.warn('croppeddata from cropper', cropData)
@@ -630,12 +633,12 @@ class CropperPage extends Component {
           }
         );
         //
-      },
-      (err) => {
-        alert(err);
-        console.log(err);
-      }
-    );
+    //   },
+    //   (err) => {
+    //     alert(err);
+    //     console.log(err);
+    //   }
+    // );
   }
 
   render() {
