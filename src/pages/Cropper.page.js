@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ImageEditor, Animated, PanResponder } from 'react-native';
+import { Animated, PanResponder } from 'react-native';
+import ImageEditor from "@react-native-community/image-editor";
 import RNImageRotate from 'react-native-image-rotate';
 import PropTypes from 'prop-types';
 import { SCREEN_WIDTH, SCREEN_HEIGHT, W, MINIMUM_CROP_AREA } from '../components/Cropper/Cropper.constants';
@@ -100,6 +101,7 @@ class CropperPage extends Component {
       rotation: props.initialRotation,
     };
     this.isRectangleMoving = false;
+    this.onDone = this.onDone.bind(this);
   }
 
   onCancel = () => { this.props.onCancel(); }
@@ -615,11 +617,8 @@ class CropperPage extends Component {
     //   this.state.rotation,
     //   (rotatedUri) => {
         //
-        ImageEditor.cropImage(
-          this.props.imageUri,
-          cropData,
-          (croppedUri) => {
-            console.warn('croppeddata from cropper', cropData)
+        ImageEditor.cropImage(this.props.imageUri, cropData).then(croppedUri => {
+            console.warn('croppeddata from cropper', croppedUri)
             const croppedImageData = {
               width,
               height,
