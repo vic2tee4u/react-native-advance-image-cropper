@@ -1,6 +1,6 @@
 {
   "name": "react-native-advance-image-cropper",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "React native image cropper with rotation and custom Footer",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "@react-native-community/image-editor": "^2.3.0"
   },
   "peerDependencies": {
     "react": "*",
