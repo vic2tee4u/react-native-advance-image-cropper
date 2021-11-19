@@ -19,6 +19,13 @@ const App = (props) => (
     NOT_SELECTED_AREA_OPACITY={props.NOT_SELECTED_AREA_OPACITY}
     BORDER_WIDTH={props.BORDER_WIDTH}
     FOOTER_HEIGHT={props.FOOTER_HEIGHT}
+    onDragStart={props.onDragStart}
+    onDragEnd={props.onDragEnd}
+    topSideStyles={props.topSideStyles}
+    leftSideStyles={props.leftSideStyles}
+    rightSideStyles={props.rightSideStyles}
+    bottomSideStyles={props.bottomSideStyles}
+    onCapture={props.onCapture}
   />
 )
 
@@ -38,6 +45,8 @@ App.propTypes = {
   NOT_SELECTED_AREA_OPACITY: PropTypes.number,
   BORDER_WIDTH: PropTypes.number,
   FOOTER_HEIGHT: PropTypes.number,
+  onDragStart: PropTypes.func,
+  onDragEnd: PropTypes.func,
 };
 
 App.defaultProps = {

@@ -345,6 +345,7 @@ class CropperPage extends Component {
         if (this.isAllowedToMove(position, gesture)) {
           this.state[position].setValue({ x: gesture.dx, y: gesture.dy });
         }
+        if (this.props.onDragStart) this.props.onDragStart();
       },
       onPanResponderRelease: () => {
         // make to not reset position
@@ -352,6 +353,7 @@ class CropperPage extends Component {
         this.state.leftPosition.flattenOffset();
         this.state.bottomPosition.flattenOffset();
         this.state.rightPosition.flattenOffset();
+        if (this.props.onDragEnd) this.props.onDragEnd();
       },
       onPanResponderGrant: () => {
         this.state.topPosition.setOffset({
@@ -387,6 +389,7 @@ class CropperPage extends Component {
         this.state.leftPosition.setValue({ x: gesture.dx, y: gesture.dy });
         this.state.bottomPosition.setValue({ x: gesture.dx, y: gesture.dy });
         this.state.rightPosition.setValue({ x: gesture.dx, y: gesture.dy });
+        if (this.props.onDragStart) this.props.onDragStart();
       },
       onPanResponderRelease: () => {
         this.isRectangleMoving = true;
@@ -399,7 +402,7 @@ class CropperPage extends Component {
         const width = this.state.rightPosition.x._value - this.state.leftPosition.x._value - this.props.BORDER_WIDTH;
         const height = this.state.bottomPosition.y._value - this.state.topPosition.y._value - this.props.BORDER_WIDTH;
         let isOutside = false;
-
+        if (this.props.onDragEnd) this.props.onDragEnd();
         if (this.state.leftPosition.x._value < this.state.LEFT_LIMIT - this.props.BORDER_WIDTH) {
           isOutside = true;
           Animated.parallel([
@@ -469,6 +472,7 @@ class CropperPage extends Component {
     return PanResponder.create({
       onStartShouldSetPanResponder: () => !this.isRectangleMoving,
       onPanResponderMove: (event, gesture) => {
+        if (this.props.onDragStart) this.props.onDragStart();
         if (this.isAllowedToMove(pos1, gesture)) {
           this.state[pos1].setValue({ x: gesture.dx, y: gesture.dy });
         }
@@ -481,6 +485,7 @@ class CropperPage extends Component {
         this.state.leftPosition.flattenOffset();
         this.state.bottomPosition.flattenOffset();
         this.state.rightPosition.flattenOffset();
+        if (this.props.onDragEnd) this.props.onDragEnd();
       },
       onPanResponderGrant: () => {
         this.state.topPosition.setOffset({ x: this.state.topPosition.x._value, y: this.state.topPosition.y._value });
@@ -584,7 +589,7 @@ class CropperPage extends Component {
   }
 
   onDone = () => {
-    if (this.isRectangleMoving) return null;
+    if (this.isRectangleMoving || !this.props.imageUri) return null;
 
     //this.setState({ isSaving: true });
     const IMAGE_W = SCREEN_WIDTH - this.state.RIGHT_LIMIT - this.state.LEFT_LIMIT;
@@ -625,6 +630,7 @@ class CropperPage extends Component {
               uri: croppedUri,
             }
             this.props.onDone(croppedImageData);
+            if (this.props.onLoad) this.props.onLoad(croppedImageData)
           },
           (err) => {
             console.log('cropping error');
@@ -639,6 +645,11 @@ class CropperPage extends Component {
     //   }
     // );
   }
+
+  componentDidMount() {
+    this.onDone()
+  }
+
 
   render() {
     return (
@@ -680,6 +691,10 @@ class CropperPage extends Component {
         leftOuterRef={ref => { this.leftOuter = ref; }}
         bottomOuterRef={ref => { this.bottomOuter = ref; }}
         rightOuterRef={ref => { this.rightOuter = ref; }}
+        topSideStyles={this.props.topSideStyles}
+        leftSideStyles={this.props.leftSideStyles}
+        rightSideStyles={this.props.rightSideStyles}
+        bottomSideStyles={this.props.bottomSideStyles}
       />
     );
   }
@@ -698,6 +713,8 @@ CropperPage.propTypes = {
   RIGHT_VALUE: PropTypes.number,
   initialRotation: PropTypes.number,
   NOT_SELECTED_AREA_OPACITY: PropTypes.number,
+  onDragStart: PropTypes.func,
+  onDragEnd: PropTypes.func,
 };
 
 export default CropperPage;
