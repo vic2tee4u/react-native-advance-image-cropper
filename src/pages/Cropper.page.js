@@ -612,7 +612,7 @@ class CropperPage extends Component {
     const cropData = {
       offset: { x, y },
       size: { width, height },
-      resizeMode: 'stretch'
+      resizeMode: 'contain'
     };
 
     // Rotation is removed for now
