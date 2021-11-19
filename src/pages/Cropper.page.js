@@ -296,7 +296,7 @@ class CropperPage extends Component {
       left: this.state.LEFT_LIMIT + DIFF,
       bottom: this.state.BOTTOM_LIMIT - DIFF,
       right: this.state.RIGHT_LIMIT + DIFF,
-      resizeMode: 'contain',
+      resizeMode: 'stretch',
       transform: [
         { rotate: `${this.state.rotation.toString()}deg` },
       ],
