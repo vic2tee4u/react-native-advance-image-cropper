@@ -8,6 +8,7 @@ const App = (props) => (
     footerComponent={props.footerComponent}
     onDone={props.onDone}
     onCancel={props.onCancel}
+    onLoad={props.onLoad}
     imageUri={props.imageUri}
     imageWidth={props.imageWidth}
     imageHeight={props.imageHeight}
@@ -34,6 +35,7 @@ App.propTypes = {
   footerComponent: PropTypes.object,
   onDone: PropTypes.func,
   onCancel: PropTypes.func,
+  onLoad: PropTypes.func,
   imageUri: PropTypes.string,
   imageWidth: PropTypes.number,
   imageHeight: PropTypes.number,
